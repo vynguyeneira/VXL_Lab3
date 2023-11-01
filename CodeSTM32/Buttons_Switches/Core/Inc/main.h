@@ -29,6 +29,11 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f1xx_hal.h"
+#include "software_timer.h"
+#include "button.h"
+#include "display.h"
+#include "global.h"
+#include "fsm_traffic_light.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */

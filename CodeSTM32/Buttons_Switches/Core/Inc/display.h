@@ -9,6 +9,7 @@
 #define INC_DISPLAY_H_
 
 #include "main.h"
+#include "global.h"
 
 extern int index_led;
 extern int counter_led_vertical;

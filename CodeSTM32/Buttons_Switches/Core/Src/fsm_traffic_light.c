@@ -369,7 +369,7 @@ void fsm_traffic_light()
 		if(isButtonPressed(1) == 1)  //Button MODIFY MODE is pressed
 		{
 			status = INC_GREEN;
-			if(PERIOD_GREEN >= 99) PERIOD_GREEN = 1;
+			if(PERIOD_GREEN >= PERIOD_RED - PERIOD_YELLOW) PERIOD_GREEN = 1;
 			else PERIOD_GREEN++;
 		}
 		break;
@@ -392,7 +392,7 @@ void fsm_traffic_light()
 
 		if (isButtonPressed(1) == 1)  //Button MODIFY MODE is pressed
 		{
-			if(PERIOD_GREEN >= 99) PERIOD_GREEN = 1;
+			if(PERIOD_GREEN >= PERIOD_RED - PERIOD_YELLOW) PERIOD_GREEN = 1;
 			else PERIOD_GREEN++;
 		}
 
@@ -407,16 +407,5 @@ void fsm_traffic_light()
 
 	default:
 		break;
-}
-
-
-
-
-
-
-
-
-
-
-
+	}
 }

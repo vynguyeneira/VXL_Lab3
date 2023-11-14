@@ -7,57 +7,33 @@
 
 #include "display.h"
 
-void display7SEG(int num)
+void display7SEG(int counter)
 {
-	if (num == 0)
-	{
-		HAL_GPIO_WritePin (GPIOB, SEG0_Pin|SEG1_Pin|SEG2_Pin|SEG3_Pin|SEG4_Pin|SEG5_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin (GPIOB, SEG6_Pin, GPIO_PIN_SET);
-	}
-	else if (num == 1)
-	{
-		HAL_GPIO_WritePin (GPIOB, SEG1_Pin|SEG2_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin (GPIOB, SEG0_Pin|SEG3_Pin|SEG4_Pin|SEG5_Pin|SEG6_Pin, GPIO_PIN_SET);
-	}
-	else if (num == 2)
-	{
-		HAL_GPIO_WritePin (GPIOB, SEG0_Pin|SEG1_Pin|SEG3_Pin|SEG4_Pin|SEG6_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin (GPIOB, SEG2_Pin|SEG5_Pin, GPIO_PIN_SET);
-	}
-	else if (num == 3)
-	{
-		HAL_GPIO_WritePin (GPIOB, SEG0_Pin|SEG1_Pin|SEG2_Pin|SEG3_Pin|SEG6_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin (GPIOB, SEG4_Pin|SEG5_Pin, GPIO_PIN_SET);
-	}
-	else if (num == 4)
-	{
-		HAL_GPIO_WritePin (GPIOB, SEG1_Pin|SEG2_Pin|SEG5_Pin|SEG6_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin (GPIOB, SEG0_Pin|SEG3_Pin|SEG4_Pin, GPIO_PIN_SET);
-	}
-	else if (num == 5)
-	{
-		HAL_GPIO_WritePin (GPIOB, SEG0_Pin|SEG2_Pin|SEG3_Pin|SEG5_Pin|SEG6_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin (GPIOB, SEG1_Pin|SEG4_Pin, GPIO_PIN_SET);
-	}
-	else if (num == 6)
-	{
-		HAL_GPIO_WritePin (GPIOB, SEG0_Pin|SEG2_Pin|SEG3_Pin|SEG4_Pin|SEG5_Pin|SEG6_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin (GPIOB, SEG1_Pin, GPIO_PIN_SET);
-	}
-	else if (num == 7)
-	{
-		HAL_GPIO_WritePin (GPIOB, SEG0_Pin|SEG1_Pin|SEG2_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin (GPIOB, SEG3_Pin|SEG4_Pin|SEG5_Pin|SEG6_Pin, GPIO_PIN_SET);
-	}
-	else if (num == 8)
-	{
-		HAL_GPIO_WritePin (GPIOB, SEG0_Pin|SEG1_Pin|SEG2_Pin|SEG3_Pin|SEG4_Pin|SEG5_Pin|SEG6_Pin, GPIO_PIN_RESET);
-	}
-	else
-	{
-		HAL_GPIO_WritePin (GPIOB, SEG0_Pin|SEG1_Pin|SEG2_Pin|SEG3_Pin|SEG5_Pin|SEG6_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin (GPIOB, SEG4_Pin, GPIO_PIN_SET);
-	}
+	/* Declare an array includes bit values to display numbers from 0 to 9 */
+	unsigned char disp_arr[10] = {0x40, 0x79, 0x24, 0x30, 0x19, 0x12, 0x02, 0x78, 0x00, 0x10};
+	/* Declare a variable stores bit values 7-SEG of "counter" to display number */
+	unsigned char bit_var, varr = disp_arr[counter];
+
+	bit_var = varr & 0x01;
+	HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, bit_var);
+
+	bit_var = (varr>>1) & 0x01;
+	HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, bit_var);
+
+	bit_var = (varr>>2) & 0x01;
+	HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, bit_var);
+
+	bit_var = (varr>>3) & 0x01;
+	HAL_GPIO_WritePin(SEG3_GPIO_Port, SEG3_Pin, bit_var);
+
+	bit_var = (varr>>4) & 0x01;
+	HAL_GPIO_WritePin(SEG4_GPIO_Port, SEG4_Pin, bit_var);
+
+	bit_var = (varr>>5) & 0x01;
+	HAL_GPIO_WritePin(SEG5_GPIO_Port, SEG5_Pin, bit_var);
+
+	bit_var = (varr>>6) & 0x01;
+	HAL_GPIO_WritePin(SEG6_GPIO_Port, SEG6_Pin, bit_var);
 }
 
 //---------------//
@@ -180,9 +156,9 @@ void updateClockBufferMode1()
 		led_buffer[2] = (PERIOD_RED + PERIOD_GREEN + PERIOD_YELLOW - counter_led_vertical) / 10;
 		led_buffer[3] = (PERIOD_RED + PERIOD_GREEN + PERIOD_YELLOW - counter_led_vertical) % 10;
 	}
-	counter_led_horizontal++;
+	counter_led_vertical++;
 
-	if (counter_led_horizontal > PERIOD_RED + PERIOD_YELLOW + PERIOD_GREEN)
+	if (counter_led_vertical > PERIOD_RED + PERIOD_YELLOW + PERIOD_GREEN)
 		counter_led_vertical = 1;
 }
 

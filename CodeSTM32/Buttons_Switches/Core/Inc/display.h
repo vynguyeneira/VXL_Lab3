@@ -15,7 +15,7 @@ extern int index_led;
 extern int counter_led_vertical;
 extern int counter_led_horizontal;
 
-void display7SEG(int num);
+void display7SEG(int counter);
 void update7SEG(int index);
 
 void updateClockBufferMode1();

@@ -21,7 +21,7 @@
 
 #define	AUTO_RED		21
 #define AUTO_YELLOW		22
-#define AUOTO_GREEN		23
+#define AUTO_GREEN		23
 
 #define INC_RED			31
 #define INC_YELLOW		32

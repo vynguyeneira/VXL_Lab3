@@ -29,11 +29,6 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f1xx_hal.h"
-#include "software_timer.h"
-#include "button.h"
-#include "display.h"
-#include "global.h"
-#include "fsm_traffic_light.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -69,31 +64,31 @@ void Error_Handler(void);
 #define MODIFY_MODE_GPIO_Port GPIOA
 #define SET_VALUE_Pin GPIO_PIN_3
 #define SET_VALUE_GPIO_Port GPIOA
-#define LED_RED_1h_Pin GPIO_PIN_5
+#define LED_RED_1h_Pin GPIO_PIN_4
 #define LED_RED_1h_GPIO_Port GPIOA
-#define LED_YELLOW_1h_Pin GPIO_PIN_6
+#define LED_YELLOW_1h_Pin GPIO_PIN_5
 #define LED_YELLOW_1h_GPIO_Port GPIOA
-#define LED_GREEN_1h_Pin GPIO_PIN_7
+#define LED_GREEN_1h_Pin GPIO_PIN_6
 #define LED_GREEN_1h_GPIO_Port GPIOA
+#define LED_RED_2v_Pin GPIO_PIN_7
+#define LED_RED_2v_GPIO_Port GPIOA
 #define SEG0_Pin GPIO_PIN_0
 #define SEG0_GPIO_Port GPIOB
 #define SEG1_Pin GPIO_PIN_1
 #define SEG1_GPIO_Port GPIOB
 #define SEG2_Pin GPIO_PIN_2
 #define SEG2_GPIO_Port GPIOB
-#define LED_RED_2v_Pin GPIO_PIN_8
-#define LED_RED_2v_GPIO_Port GPIOA
-#define LED_YELLOW_2v_Pin GPIO_PIN_9
+#define LED_YELLOW_2v_Pin GPIO_PIN_8
 #define LED_YELLOW_2v_GPIO_Port GPIOA
-#define LED_GREEN_2v_Pin GPIO_PIN_10
+#define LED_GREEN_2v_Pin GPIO_PIN_9
 #define LED_GREEN_2v_GPIO_Port GPIOA
-#define VERTICAL_1_Pin GPIO_PIN_12
+#define VERTICAL_1_Pin GPIO_PIN_10
 #define VERTICAL_1_GPIO_Port GPIOA
-#define VERTICAL_2_Pin GPIO_PIN_13
+#define VERTICAL_2_Pin GPIO_PIN_11
 #define VERTICAL_2_GPIO_Port GPIOA
-#define HORIZONTAL_1_Pin GPIO_PIN_14
+#define HORIZONTAL_1_Pin GPIO_PIN_12
 #define HORIZONTAL_1_GPIO_Port GPIOA
-#define HORIZONTAL_2_Pin GPIO_PIN_15
+#define HORIZONTAL_2_Pin GPIO_PIN_13
 #define HORIZONTAL_2_GPIO_Port GPIOA
 #define SEG3_Pin GPIO_PIN_3
 #define SEG3_GPIO_Port GPIOB

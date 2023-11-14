@@ -11,7 +11,7 @@
 #define NUM_OF_TIMERS		4
 
 extern int TIME_CYCLE;
-extern int timer_counter[NUM_OF_TIMERS];
+
 extern int timer_flag[NUM_OF_TIMERS];
 
 void setTimer(int index, int duration);

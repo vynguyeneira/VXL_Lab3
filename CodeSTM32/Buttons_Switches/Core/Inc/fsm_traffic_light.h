@@ -10,6 +10,9 @@
 
 #include "main.h"
 #include "global.h"
+#include "button.h"
+#include "display.h"
+#include "software_timer.h"
 
 void fsm_traffic_light();
 
